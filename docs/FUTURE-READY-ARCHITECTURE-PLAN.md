@@ -708,10 +708,7 @@ import { tokenConfig } from '@/config/theme';
 
 export function CTAButton({ children }) {
   return (
-    <button style={{
-      backgroundColor: tokenConfig.colors.brand.primary,
-      ':hover': { color: tokenConfig.colors.brand.primaryHover }
-    }}>
+    <button className="btn-primary">
       {children}
     </button>
   );
