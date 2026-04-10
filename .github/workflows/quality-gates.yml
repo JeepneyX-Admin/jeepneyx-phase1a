@@ -44,7 +44,10 @@ jobs:
           node-version: 22
 
       - name: Install accessibility tooling
-        run: npm install -g @axe-core/cli http-server wait-on
+        run: npm install -g @axe-core/cli http-server wait-on browser-driver-manager
+
+      - name: Install matching Chrome WebDriver
+        run: npx browser-driver-manager install chrome
 
       - name: Start static server
         run: |
@@ -80,7 +83,6 @@ jobs:
             --no-progress
             --accept 200,429
             --timeout 10
-            --exclude-mail
             --exclude 'https://www.facebook.com/.*'
             --exclude 'https://fonts.gstatic.com/.*'
             --exclude 'https://formspree.io/.*'
