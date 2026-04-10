@@ -1,9 +1,9 @@
 # JeepneyX Phase 1A Sitemap
 
 ## Primary Pages
-1. Home (`index.html`)
-2. About (`company.html`)
-3. Contact (`contact.html`)
+1. Home (`/`)
+2. About (`/company.html`)
+3. Contact (`/contact.html`)
 
 ## Home Page Sections
 1. Floating Header Navigation
