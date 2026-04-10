@@ -72,6 +72,19 @@ When implementing a page/feature, follow this flow:
 3. Self-review before sharing (responsive checks, CTA behavior, forms, and no fabricated placeholders).
 4. Run Notion closeout updates after each meaningful session.
 
+## Client Request Intake Protocol (Issue-First)
+When a client asks for a new feature, bug fix, or update through chat/email/call:
+1. Treat direct message as intake only.
+2. Create or update a GitHub Issue before implementation begins.
+3. Ensure the issue includes:
+	- request type (feature, bug, update)
+	- problem statement or requested outcome
+	- acceptance criteria
+	- priority/phase context
+4. Implement from `development` branch.
+5. Deliver to production only through PR `development` -> `main`.
+6. Reflect final status/decision in Notion or queue it in `docs/PENDING-NOTION-SYNC.md` if Notion is unavailable.
+
 ## Session Closeout (Required)
 After each major build session, update:
 1. Deliverables Log entry for all items touched.

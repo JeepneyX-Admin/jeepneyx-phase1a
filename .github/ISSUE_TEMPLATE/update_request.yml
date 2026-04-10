@@ -1,0 +1,68 @@
+name: Update or change request
+about: Track non-bug updates (content, copy, design, asset, policy)
+title: "chore: "
+labels:
+  - update
+body:
+  - type: input
+    id: summary
+    attributes:
+      label: Update summary
+      description: Short description of the requested update.
+      placeholder: Update homepage hero copy based on client feedback
+    validations:
+      required: true
+  - type: dropdown
+    id: update_type
+    attributes:
+      label: Update type
+      options:
+        - Content copy
+        - Design/UI
+        - Asset/media
+        - Configuration
+        - Process/governance
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: details
+    attributes:
+      label: Requested change details
+      description: What exactly should be changed?
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance criteria
+      value: |
+        - [ ] Implemented on development branch
+        - [ ] Visual/content review completed
+        - [ ] PR created from development to main
+        - [ ] Notion status updated or queued in pending sync file
+    validations:
+      required: true
+  - type: dropdown
+    id: phase
+    attributes:
+      label: Phase context
+      options:
+        - Phase 1A
+        - Phase 1B
+        - Phase 2
+        - Phase 3
+        - Phase 4
+        - General
+    validations:
+      required: true
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Priority
+      options:
+        - High
+        - Medium
+        - Low
+    validations:
+      required: true

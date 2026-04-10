@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Intake via client chat/email/call
+    url: https://github.com/JeepneyX-Admin/jeepneyx-phase1a/issues/new/choose
+    about: Use this after receiving client request via direct message. Convert every actionable request into an issue before implementation.

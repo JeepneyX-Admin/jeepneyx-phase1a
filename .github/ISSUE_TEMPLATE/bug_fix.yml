@@ -1,0 +1,76 @@
+name: Bug fix
+about: Report and track a defect that needs fixing
+title: "fix: "
+labels:
+  - bug
+body:
+  - type: input
+    id: summary
+    attributes:
+      label: Bug summary
+      description: One-line description of the issue.
+      placeholder: Contact form submit button not visible on mobile
+    validations:
+      required: true
+  - type: textarea
+    id: observed
+    attributes:
+      label: Current behavior
+      description: What is happening now?
+      placeholder: Button text clips on small screens and overflows container.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+      description: What should happen instead?
+      placeholder: Button remains readable and fully visible on all supported devices.
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      description: Numbered steps to reproduce the bug.
+      placeholder: |
+        1. Open contact page on mobile viewport
+        2. Scroll to form section
+        3. Observe submit button rendering
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance criteria
+      value: |
+        - [ ] Root cause identified
+        - [ ] Fix implemented on development branch
+        - [ ] No regressions on related pages
+        - [ ] PR created from development to main
+    validations:
+      required: true
+  - type: dropdown
+    id: severity
+    attributes:
+      label: Severity
+      options:
+        - Critical
+        - High
+        - Medium
+        - Low
+    validations:
+      required: true
+  - type: dropdown
+    id: phase
+    attributes:
+      label: Phase context
+      options:
+        - Phase 1A
+        - Phase 1B
+        - Phase 2
+        - Phase 3
+        - Phase 4
+        - General
+    validations:
+      required: true

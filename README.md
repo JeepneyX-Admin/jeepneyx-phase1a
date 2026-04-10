@@ -72,3 +72,28 @@ Example:
 - Perform at least 3 successful Formspree test submissions
 - Replace placeholder social profile URLs when official links are available
 - Confirm no placeholder copy remains
+
+## Request Intake And Delivery Workflow
+
+Use this workflow for any new feature, bug fix, or content/design update.
+
+### Source Of Requests
+- Client chat/email/call messages are accepted as intake.
+- GitHub Issues are the official execution queue.
+
+### Required Process
+1. Receive request from client (chat/email/call).
+2. Create a GitHub Issue before implementation starts.
+3. Classify the issue as one of:
+	- Feature request
+	- Bug fix
+	- Update/change request
+4. Add acceptance criteria and expected outcome in the issue.
+5. Implement on `development` branch.
+6. Open Pull Request from `development` to `main`.
+7. Merge PR only after review/validation.
+8. Sync status and decision to Notion (or queue in `docs/PENDING-NOTION-SYNC.md` if Notion is unavailable).
+
+### Branch Rule
+- Direct push to `main` is blocked by branch protection.
+- All production changes must go through Pull Request.
