@@ -45,7 +45,7 @@ components/
 ```
 
 **Phase 1A Action**: 
-- Refactor index.html, company.html, contact.html to use `<link rel="import">` or `{{ include() }}` placeholders
+- Refactor index.html, company.html, contact.html to use `<link rel="import">` or `{% raw %}{{ include() }}{% endraw %}` placeholders
 - Create `components/form-inquiry.html` with Formspree integration
 - Document component API (props, states, variants) in README
 
@@ -338,7 +338,7 @@ jobs:
       - name: Deploy Preview
         run: |
           # Deploy to staging URL via Netlify or similar
-          echo "Preview: https://preview-${{ github.event.pull_request.number }}.jeepneyx-dev.com"
+          echo "Preview: https://preview-{% raw %}${{ github.event.pull_request.number }}{% endraw %}.jeepneyx-dev.com"
 ```
 
 **Phase 1A Action**:
