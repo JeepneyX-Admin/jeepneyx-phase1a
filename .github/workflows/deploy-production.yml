@@ -26,6 +26,7 @@ jobs:
         with:
           branch: gh-pages
           folder: .
+          dotfiles: true
           clean: true
           clean-exclude: |
             previews

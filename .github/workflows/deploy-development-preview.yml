@@ -21,11 +21,23 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Prepare preview artifact
+        run: |
+          mkdir -p preview-build
+          rsync -av --delete \
+            --exclude '.git/' \
+            --exclude '.github/' \
+            --exclude 'docs/' \
+            --exclude 'Requirements/' \
+            --exclude '*.md' \
+            ./ preview-build/
+
       - name: Deploy preview to gh-pages subpath
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           branch: gh-pages
-          folder: .
+          folder: preview-build
+          dotfiles: true
           target-folder: previews/development/${{ github.sha }}
           clean: false
           single-commit: true
