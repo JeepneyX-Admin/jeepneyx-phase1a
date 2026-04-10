@@ -82,6 +82,8 @@ jobs:
             --timeout 10
             --exclude-mail
             --exclude 'https://www.facebook.com/.*'
+            --exclude 'https://fonts.gstatic.com/.*'
+            --exclude 'https://formspree.io/.*'
             --exclude 'https://www.instagram.com/.*'
             --exclude 'https://www.linkedin.com/.*'
             --exclude 'https://www.youtube.com/.*'
