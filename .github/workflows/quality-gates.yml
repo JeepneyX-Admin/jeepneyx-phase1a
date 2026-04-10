@@ -1,0 +1,92 @@
+name: Quality Gates
+
+on:
+  pull_request:
+    branches:
+      - main
+      - development
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  html-validate:
+    name: HTML Validation
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install HTML validator
+        run: npm install -g html-validate
+
+      - name: Validate top-level HTML pages
+        run: html-validate *.html
+
+  accessibility-smoke:
+    name: Accessibility Smoke (WCAG A/AA)
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install accessibility tooling
+        run: npm install -g @axe-core/cli http-server wait-on
+
+      - name: Start static server
+        run: |
+          http-server . -p 8080 -c-1 &
+          npx wait-on http://127.0.0.1:8080/index.html --timeout 30000
+
+      - name: Run axe checks on critical pages
+        run: |
+          EXIT_CODE=0
+          for page in index company contact model 404; do
+            echo "Checking ${page}.html..."
+            axe http://127.0.0.1:8080/${page}.html --tags wcag2a,wcag2aa || EXIT_CODE=1
+          done
+          exit $EXIT_CODE
+
+      - name: Stop static server
+        if: always()
+        run: pkill -f http-server || true
+
+  link-check:
+    name: Link Check
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Link checker
+        uses: lycheeverse/lychee-action@v2
+        with:
+          args: >-
+            --verbose
+            --no-progress
+            --accept 200,429
+            --timeout 10
+            --exclude-mail
+            --exclude 'https://www.facebook.com/.*'
+            --exclude 'https://www.instagram.com/.*'
+            --exclude 'https://www.linkedin.com/.*'
+            --exclude 'https://www.youtube.com/.*'
+            '*.html'
+            '**/*.html'
+          fail: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
