@@ -1,0 +1,45 @@
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Manrope", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: #f8fafc;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  transition: color 180ms ease, background-color 180ms ease, border-color 180ms ease;
+}
+
+@media (max-width: 1023px) {
+  #mobile-menu a {
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
+  }
+}
+
+/* Fallback brand utilities in case Tailwind custom config fails to load in previews. */
+.bg-brand-700 {
+  background-color: #39ff14;
+}
+
+.hover\:bg-brand-800:hover {
+  background-color: #30d911;
+}
+
+.text-brand-800 {
+  color: #30d911;
+}
+
+.text-brand-900 {
+  color: #1e7a00;
+}
+
+.focus\:ring-brand-900:focus {
+  --tw-ring-color: #1e7a00;
+}

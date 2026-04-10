@@ -1,0 +1,24 @@
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Manrope", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: #f8fafc;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  transition: color 180ms ease, background-color 180ms ease, border-color 180ms ease;
+}
+
+@media (max-width: 1023px) {
+  #mobile-menu a {
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
+  }
+}
