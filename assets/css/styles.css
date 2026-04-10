@@ -22,3 +22,24 @@ a {
     padding-bottom: 0.25rem;
   }
 }
+
+/* Fallback brand utilities in case Tailwind custom config fails to load in previews. */
+.bg-brand-700 {
+  background-color: #39ff14;
+}
+
+.hover\:bg-brand-800:hover {
+  background-color: #30d911;
+}
+
+.text-brand-800 {
+  color: #30d911;
+}
+
+.text-brand-900 {
+  color: #1e7a00;
+}
+
+.focus\:ring-brand-900:focus {
+  --tw-ring-color: #1e7a00;
+}
