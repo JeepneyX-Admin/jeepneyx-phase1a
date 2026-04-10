@@ -14,7 +14,7 @@ Static corporate website for Jeepney X focused on digital credibility, business 
 - Form handling via Formspree
 
 ## Current Pages
-- `index.html` - Home
+- `/` (served from `index.html`) - Home
 - `company.html` - About / Company Profile
 - `contact.html` - Contact and Inquiry Form
 
@@ -37,7 +37,26 @@ python -m http.server 8080
 ```
 
 Then open:
-- `http://localhost:8080/index.html`
+- `http://localhost:8080/`
+
+## Branch Deployment Workflow
+- `main` branch: production deployment
+- `development` branch: automatic preview deployment
+
+### One-Time GitHub Setup
+1. Open repository `Settings` > `Pages`
+2. Set `Source` to `Deploy from a branch`
+3. Select branch `gh-pages` and folder `/(root)`
+4. Save settings
+
+### URLs
+- Production URL:
+	- `https://jeepneyx.com/`
+- Development preview URL pattern (one unique URL per commit):
+	- `https://jeepneyx-admin.github.io/jeepneyx-phase1a/previews/development/<commit-sha>/`
+
+Example:
+- `https://jeepneyx-admin.github.io/jeepneyx-phase1a/previews/development/1546339516a130838d76de1b48fe4483908499a5/`
 
 ## GitHub Pages Readiness Checklist
 - [x] Static-only architecture (no backend runtime)

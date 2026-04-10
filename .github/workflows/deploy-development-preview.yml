@@ -1,0 +1,40 @@
+name: Deploy Development Preview
+
+on:
+  push:
+    branches:
+      - development
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: deploy-development-preview
+  cancel-in-progress: false
+
+jobs:
+  deploy-preview:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Deploy preview to gh-pages subpath
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: gh-pages
+          folder: .
+          target-folder: previews/development/${{ github.sha }}
+          clean: false
+          single-commit: true
+
+      - name: Publish preview URL summary
+        run: |
+          PREVIEW_URL="https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/previews/development/${{ github.sha }}/"
+          {
+            echo "## Development Preview Ready"
+            echo ""
+            echo "Preview URL: ${PREVIEW_URL}"
+          } >> "$GITHUB_STEP_SUMMARY"
