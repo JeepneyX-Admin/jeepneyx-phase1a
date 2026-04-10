@@ -10,8 +10,7 @@ const brandTokens =
     ? window.JeepneyXThemeTokens.brand
     : fallbackBrandTokens;
 
-window.tailwind = window.tailwind || {};
-window.tailwind.config = {
+const tailwindConfig = {
   theme: {
     extend: {
       colors: {
@@ -24,3 +23,8 @@ window.tailwind.config = {
     }
   }
 };
+
+// Expose config in both forms Tailwind CDN checks across versions.
+var tailwind = window.tailwind || {};
+tailwind.config = tailwindConfig;
+window.tailwind = tailwind;
