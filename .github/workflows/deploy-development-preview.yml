@@ -26,6 +26,7 @@ jobs:
         with:
           branch: gh-pages
           folder: .
+          dotfiles: true
           target-folder: previews/development/${{ github.sha }}
           clean: false
           single-commit: true
